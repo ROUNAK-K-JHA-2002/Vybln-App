@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vybln/responsive/Mobile_Screen_Layout.dart';
+import 'package:vybln/responsive/Web_Screen_Layout.dart';
+import 'package:vybln/responsive/responsive_layout.dart';
 import 'package:vybln/utils/colors.dart';
 
 void main() {
@@ -14,9 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vybln',
-      theme: ThemeData.dark()
-          .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
-      home: const Scaffold(body: Text("Hello World")),
+      theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor:
+              mobileBackgroundColor), //Uses Theme Color from Color file
+      home: const ResponsiveLayout(
+        mobileScreenLayout: MobileScreenLayout(),
+        webScreenLayout: WebScreenLayout(),
+      ),
     );
   }
 }
